@@ -5,7 +5,7 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-#define DELAY 50000 //this in microseconds (no one asked)
+#define DELAY 50000 // this is in microseconds, no one asked
 
 int main() {
     int max_x, max_y;
