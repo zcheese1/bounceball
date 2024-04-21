@@ -1,7 +1,7 @@
 // @2024 All Balls Preserved.
 // GNOME is pronounced GUH-Nome
 
-// compile in Linux with `gcc bounce.c -o bounce -lncurses` (yes, it uses ncurses)
+// compile in Linux or MacOS with `gcc bounce.c -o bounce -lncurses` (yes, it uses ncurses)
 #include <ncurses.h>
 #include <unistd.h>
 
