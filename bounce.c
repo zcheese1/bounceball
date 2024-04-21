@@ -5,7 +5,7 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-#define DELAY 50000 // this is in microseconds, no one asked
+#define DELAY 50000
 
 int main() {
     int max_x, max_y;
@@ -18,13 +18,25 @@ int main() {
     curs_set(FALSE);
     timeout(0);
 
+    if (!has_colors()) {
+        endwin(); // this is not winning lol, it's ncurses 
+        fprintf(stderr, "Error: Terminal colorblind :( \n"); // treat your Achromatopsia terminal btw
+        return 1;
+    }
+
+    start_color();
+
+    init_pair(1, COLOR_BLACK, COLOR_WHITE);
+
     getmaxyx(stdscr, max_y, max_x);
 
     while (1) {
         clear();
-        mvprintw(y, x, "O"); //THIS IS A BALL!!1!
+        attron(COLOR_PAIR(1));
+        mvprintw(y, x, "O"); // your ball looks like this
         mvprintw(0, 0, "BOUNCE COUNT: %d", bounce_count);
         mvprintw(max_y - 1, 0, "Press ESC to exit");
+        attroff(COLOR_PAIR(1));
         refresh();
         x += x_dir;
         y += y_dir;
@@ -42,8 +54,9 @@ int main() {
         usleep(DELAY);
     }
 
-    endwin(); //There is no win
+    endwin();
 
-    return 0;
+    return 0; // RATE 1 STAR!1
 }
 
+}
