@@ -2,7 +2,9 @@
 the most stupid thing I have ever made!
 
 You need to compile it for Linux first:
-```gcc bounce.c -o bounce -lncurses```
-
+```
+gcc bounce.c -o bounce -lncurses
+```
+<br>
 
 okay, now I have to get milk
